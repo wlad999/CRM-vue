@@ -29,7 +29,7 @@ const routes = [
   },
   {
     path: '/detail:id',
-    name: 'detailRecord',
+    name: 'detail',
     meta: { layout: 'main' },
     component: () => import('../views/Detail.vue')
   },
