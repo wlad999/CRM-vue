@@ -10,6 +10,12 @@
 
 import EmptyLayout from '@/layouts/EmptyLayout'
 import MainLayout from '@/layouts/MainLayout'
+import Detail from '@/views/Detail.vue'
+import Register from '@/views/Register.vue'
+import History from '@/views/History.vue'
+import Planning from '@/views/Planning.vue'
+import Profile from '@/views/Profile.vue'
+import Record from '@/views/Record.vue'
 
 export default {
   computed: {
@@ -19,7 +25,13 @@ export default {
   },
   components: {
     EmptyLayout,
-    MainLayout
+    MainLayout,
+    Detail,
+    Register,
+    History,
+    Planning,
+    Profile,
+    Record
   }
 }
 </script>
