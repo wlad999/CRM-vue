@@ -90,7 +90,7 @@ export default {
     }
   },
   methods: {
-    submitHandler () {
+    async submitHandler () {
       // console.log(this.$v.password)
 
       if (this.$v.$invalid) {
@@ -101,9 +101,10 @@ export default {
         email: this.email,
         password: this.password
       }
-      console.log('FORM data', formData)
-
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('login', formData)
+        this.$router.push('/')
+      } catch (e) {}
     }
   }
 }
