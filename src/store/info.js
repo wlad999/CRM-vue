@@ -2,9 +2,7 @@ import firebase from 'firebase/app'
 
 export default {
   state: {
-    info: {
-
-    }
+    info: {}
   },
   mutations: {
     setInfo (state, info) {

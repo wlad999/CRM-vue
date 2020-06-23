@@ -13,7 +13,7 @@ export default {
     },
     async logout({commit}) {
       await firebase.auth().signOut()
-      await commit('clearInfo')
+      commit('clearInfo')
 
     },
     async register({dispatch, commit}, {email, password, name}) {
@@ -29,7 +29,7 @@ export default {
         throw e
       }
     },
-    getUid(){
+    getUid () {
       const user = firebase.auth().currentUser
       return user ? user.uid : null
     }
