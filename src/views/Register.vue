@@ -123,8 +123,6 @@ export default {
         password: this.password,
         name: this.name
       }
-      console.log('formData', formData)
-
       try {
         await this.$store.dispatch('register', formData)
         this.$router.push('/')
