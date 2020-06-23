@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import dateFilter from '@/filters/date.filter'
+import currencyFilter from '@/filters/currency.filter'
 import messagePlagin from '@/utils/message.plagin'
 import Loader from '@/components/app/Loader.vue'
 import './registerServiceWorker'
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 Vue.use(messagePlagin)
 Vue.use(Vuilidate)
 Vue.filter('date', dateFilter)
+Vue.filter('currency', currencyFilter)
 Vue.component('Loader', Loader)
 
 firebase.initializeApp({
