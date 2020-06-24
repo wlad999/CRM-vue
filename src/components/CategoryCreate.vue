@@ -88,7 +88,7 @@ export default {
         this.limit = 1000
         this.$v.$reset()
         this.$message('Категория была создана')
-        console.log(category)
+        this.$emit('created', category)
       } catch (error) {}
     }
   }
