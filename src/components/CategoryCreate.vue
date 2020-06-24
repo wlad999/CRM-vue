@@ -38,7 +38,7 @@
           <input
           id="limit"
           type="number"
-          v-model="limit"
+          v-model.number="limit"
           :class="{invalid: !$v.limit.minValue}"
           >
           <label for="limit">Лимит</label>
@@ -75,10 +75,21 @@ export default {
     window.M.updateTextFields()
   },
   methods: {
-    submitHendler () {
+    async submitHendler () {
       if (this.$v.invalid) {
         this.$v.touch()
       }
+      try {
+        const category = await this.$store.dispatch('createCategory', {
+          title: this.title,
+          limit: this.limit
+        })
+        this.title = ''
+        this.limit = 1000
+        this.$v.$reset()
+        this.$message('Категория была создана')
+        console.log(category)
+      } catch (error) {}
     }
   }
 }
