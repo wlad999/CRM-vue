@@ -7,21 +7,15 @@
 
       <form @submit.prevent="submitHendler">
         <div class="input-field">
-          <!-- <input
-            id="name"
-            type="text"
-            v-model="title"
-            :class="{invalid: $v.title.$dirty && !$v.title.required}"
-          > -->
           <input
             id="name"
             type="text"
             v-model="title"
-            :class="{invalid: !$v.title.required}"
+            :class="{invalid: $v.title.$dirty && !$v.title.required}"
           >
           <label for="name">Название</label>
           <span
-            v-if="!$v.title.required"
+            v-if="$v.title.$dirty && !$v.title.required"
             class="helper-text invalid"
           >
             Введите название категории
@@ -29,21 +23,15 @@
         </div>
 
         <div class="input-field">
-          <!-- <input
-          id="limit"
-          type="number"
-          v-model="limit"
-          :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
-          > -->
           <input
           id="limit"
           type="number"
           v-model.number="limit"
-          :class="{invalid: !$v.limit.minValue}"
+          :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
           <label for="limit">Лимит</label>
           <span
-            v-if="!$v.limit.minValue"
+            v-if="$v.limit.$dirty && !$v.limit.minValue"
             class="helper-text invalid"
           >
           Минимальное значение {{$v.limit.$params.minValue.min}}
@@ -76,8 +64,9 @@ export default {
   },
   methods: {
     async submitHendler () {
-      if (this.$v.invalid) {
-        this.$v.touch()
+      if (this.$v.$invalid) {
+        this.$v.$touch()
+        return
       }
       try {
         const category = await this.$store.dispatch('createCategory', {

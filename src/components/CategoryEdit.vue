@@ -108,7 +108,8 @@ export default {
   methods: {
     async submitHandler () {
       if (this.$v.$invalid) {
-        this.$v.touch()
+        this.$v.$touch()
+        return
       }
       try {
         const categoryData = {
